@@ -9,9 +9,18 @@ export default function MagicLinkSentScreen() {
   const { email } = useLocalSearchParams<{ email: string }>();
 
   const handleResendLink = () => {
+    if (!email) {
+      Alert.alert('Error', 'No email address found. Please try signing up again.');
+      return;
+    }
+    
     // Simulate resending magic link
     setTimeout(() => {
-      alert('Magic link resent successfully!');
+      Alert.alert(
+        'Magic Link Resent',
+        `We've sent another secure login link to ${email}`,
+        [{ text: 'OK' }]
+      );
     }, 1000);
   };
 

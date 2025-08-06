@@ -70,11 +70,10 @@ export default function SignupScreen() {
     // Simulate magic link sending
     setTimeout(() => {
       setIsLoading(false);
-      Alert.alert(
-        'Magic Link Sent!',
-        `We've sent a secure login link to ${email}. Click the link in your email to complete your signup.`,
-        [{ text: 'OK' }]
-      );
+      router.push({
+        pathname: '/magic-link-sent',
+        params: { email }
+      });
     }, 1500);
   };
 
@@ -192,7 +191,7 @@ export default function SignupScreen() {
           <View style={styles.footer}>
             <Text style={styles.footerText}>
               Already have an account?{' '}
-              <Text style={styles.loginLink} onPress={() => router.push('/login')}>
+              <Text style={styles.loginLink} onPress={() => router.back()}>
                 Sign in here
               </Text>
             </Text>
